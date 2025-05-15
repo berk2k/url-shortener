@@ -40,3 +40,11 @@ export const getOriginalUrl = async (db, short_code) => {
 export const incrementClickCount = async (db, short_code) => {
   await db.run('UPDATE urls SET click_count = click_count + 1 WHERE short_code = ?', [short_code]);
 };
+
+export const getUrlStats = async (db, short_code) => {
+  const row = await db.get(
+    'SELECT original_url, short_code, click_count, created_at FROM urls WHERE short_code = ?',
+    [short_code]
+  );
+  return row || null;
+};

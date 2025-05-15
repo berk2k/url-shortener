@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use('/api', urlRoutes);
 
+
 app.get('/', (req, res) => {
   res.send('URL Shortener API');
 });
