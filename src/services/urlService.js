@@ -1,4 +1,4 @@
-// src/services/urlService.js
+
 import { generateShortCode } from '../utils/generateCode.js';
 
 export const createShortUrl = async (db, original_url) => {
