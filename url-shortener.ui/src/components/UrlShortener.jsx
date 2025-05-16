@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const UrlShortener = () => {
     const [originalUrl, setOriginalUrl] = useState('');
-    const [shortUrl, setshortUrl] = useState('');
+    const [shortUrl, setShortUrl] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
@@ -16,7 +16,7 @@ const UrlShortener = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/shorten', {
+            const response = await fetch('http://localhost:3001/api/shorten', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ original_url: originalUrl }),
