@@ -15,7 +15,7 @@ app.use(cors());
 // }));
 
 
-app.use('/api', urlRoutes);
+app.use('/', urlRoutes);
 
 
 app.get('/', (req, res) => {
