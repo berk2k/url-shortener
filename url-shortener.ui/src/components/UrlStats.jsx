@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 
 const UrlStats = () => {
-  const [shortCode, setShortCode] = useState('');
+  const [formData, setFormData] = useState({ short_code: '' });
   const [stats, setStats] = useState(null);
   const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const fetchStats = async () => {
     setError('');
     setStats(null);
 
-    if (!shortCode.trim()) {
+    const code = formData.short_code.trim();
+
+    if (!code) {
       setError('Please enter a short code.');
       return;
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/stats/${shortCode.trim()}`);
+      const response = await fetch(`http://localhost:3001/stats/${code}`);
 
       if (!response.ok) {
         const data = await response.json();
@@ -36,11 +43,13 @@ const UrlStats = () => {
 
       <input
         type="text"
+        name="short_code"
         placeholder="Enter short code"
-        value={shortCode}
-        onChange={(e) => setShortCode(e.target.value)}
+        value={formData.short_code}
+        onChange={handleChange}
         style={{ width: '100%', padding: 8, marginBottom: 10 }}
       />
+
       <button onClick={fetchStats} style={{ padding: '8px 16px' }}>
         Get Statistics
       </button>
