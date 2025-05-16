@@ -16,7 +16,7 @@ const UrlShortener = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/api/shorten', {
+            const response = await fetch('http://localhost:3001/shorten', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ original_url: originalUrl }),
