@@ -5,7 +5,7 @@ import path from 'path';
 
 export const initDb = async () => {
   
-  const dbDir = path.resolve('./src/db');
+  const dbDir = path.resolve('./url-shortener.api/src/db');
   
   try {
     
