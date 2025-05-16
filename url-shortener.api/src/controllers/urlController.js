@@ -13,7 +13,7 @@ export const shortenUrl = async (req, res) => {
     const short_code = await createShortUrl(db, original_url);
 
     return res.status(201).json({
-      short_url: `http://localhost:${process.env.PORT || 3000}/${short_code}`,
+      short_url: `http://localhost:${process.env.PORT || 3001}/${short_code}`,
       short_code,
       original_url
     });
